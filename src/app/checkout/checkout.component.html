@@ -1,0 +1,264 @@
+<!-- <div class="checkout-container row">
+    <div class="col-12 col-sm-6">
+        <h2>Checkout</h2>
+        <div class="bill" #bill>
+            <div class="card">
+                <div class="card-header text-center">
+                    <p class="h5 font-weight-bold text-muted">AShop.lk</p>
+                    <p class="small text-muted mb-0"> No 103,New Peradeniya, Karamada, Gelioya, Kandy, Sri Lanka</p>
+                    <p class="small text-muted mb-0"> Hotline : +94 77 100 4153</p>
+                    <p class="small text-muted mb-0"> Date: {{ currentDate | date : "EEEE YYYY-MM-dd" }} </p>
+                    <p class="small text-muted mb-0"> Time: {{ currentDate | date : "hh:mm:ss" }} </p>
+
+                </div>
+                <div class="card-body">
+                    <table class="table table-borderless">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">qty</th>
+                            <th scope="col" class="text-right">total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of cartItems; let i = index">
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{ item.name }}</td>
+                            <td>Rs. {{ item.sellingPrice }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td class="text-right">Rs. {{ item.sellingPrice * item.quantity }}</td>
+                          </tr>
+                          <tr class="border-top">
+                            <td colspan="4">Subtotal:</td>
+                            <td class="text-right">Rs. {{ getTotalPrice() }}</td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer text-center">
+                    <p class="h4">Thank you and Come again!</p>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" (click)="exportAsPDF()">Export as JPG</button>  
+    </div>
+    <div class="col-12 col-sm-6">
+        <div class="checkout-summary">
+          <p>Subtotal: Rs. {{ getTotalPrice() }}</p>
+        </div>
+        <div class="gift-option">
+            <label>
+              <input type="checkbox" [(ngModel)]="isGift">
+              <span class="ml-2">This order contains a gift</span>
+            </label>
+          </div>
+        <div *ngIf="isGift" class="gift-message">
+          <label for="giftMessage">Gift Message:</label>
+          <textarea id="giftMessage" [(ngModel)]="giftMessage" rows="4"></textarea>
+        </div>
+        <button class="btn btn-primary">Place Order</button>
+    </div>
+</div> -->
+<div class="row justify-content-center">
+  <div class="col-7">
+    <div class="accordion" id="productDetails">
+      <div class="card">
+        <div class="card-header p-0" id="headingOne">
+          <h2 class="mb-0">
+            <button class="btn btn-block text-left py-2" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"  (click)="toggleOrderSummary()" [attr.aria-expanded]="isOrderSummaryShown">
+              <div class="row justify-content-between pr-3">
+                <div class="col-auto">
+                  <p class="mb-0">
+                    <i class="bi bi-cart mr-1"></i>
+                    {{ isOrderSummaryShown ? 'Hide Order Summary' : 'Show Order Summary' }}
+                    <i class="ml-1 bi" [ngClass]="{'bi-chevron-up': isOrderSummaryShown, 'bi-chevron-down': !isOrderSummaryShown}"></i>
+                  </p>
+                </div>
+                <div class="col-auto">
+                  <p class="mb-0">RS.{{ getTotalPrice() + shipping }}</p>
+                </div>
+              </div>
+            </button>
+          </h2>
+        </div>
+    
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#productDetails">
+          <div class="card-body">
+            <div *ngFor="let item of cartItems">
+              <div class="border-bottom p-3">
+                  <div class="row justify-content-between">
+                      <div class="col-1">
+                          <img class="card-img-top" [src]="item.image" [alt]="item.name">
+                      </div>
+                      <div class="col-8">
+                          <p class="mb-1 h6">{{ item.name }}</p>
+                              <p class="small mb-1">Brand : {{ item.brand }} </p>
+                          <div class="d-flex">
+                              <div>
+                                  <span>Rs. {{ item.sellingPrice }} x 
+                                      <a (click)="decreaseQuantity(item)" class="btn btn-sm btn-link text-dark border text-decoration-none">-</a> 
+                                      {{ item.quantity }} 
+                                      <a (click)="increaseQuantity(item)" class="btn btn-sm btn-link text-dark border text-decoration-none">+</a>
+                                  </span>
+                              </div>
+                              <a class="btn btn-sm btn-link" [routerLink]="['/product', item.id]"> <i class="bi bi-eye"></i> </a>
+
+                          </div>
+                      </div>
+                      <div class="col-2 text-right">
+                          <p>Rs. {{ item.sellingPrice * item.quantity }}</p>
+                          <a class="btn btn-sm btn-link text-danger" (click)="removeItem(item)"><i class="bi bi-x-circle"></i></a>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col-10">
+                  <p>Subtotal :</p>
+                </div>
+                <div class="col-2">
+                  <p class="text-right">Rs. {{ getTotalPrice() }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-10">
+                  <p>Shipping :</p>
+                </div>
+                <div class="col-2">
+                  <p class="text-right">Rs. {{ shipping }}</p>
+                </div>
+              </div>
+              <div class="row border-top">
+                <div class="col-10">
+                  <p>Total :</p>
+                </div>
+                <div class="col-2">
+                  <p class="text-right">RS.{{ getTotalPrice() + shipping }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mt-2">
+      <div class="card-body">
+          <p class="h6 mb-2 font-weight-bold">Customer Information</p>
+          <input type="email" class="form-control mb-2" placeholder="Email">
+          <input type="phone" class="form-control mb-2" placeholder="Phone number">
+          <div class="row">
+            <div class="col-6">
+              <input type="text" class="form-control mb-2" placeholder="First name">
+            </div>
+            <div class="col-6">
+              <input type="text" class="form-control mb-2" placeholder="Last name">
+            </div>
+          </div>
+          <input type="text" class="form-control mb-2" placeholder="Street address">
+          <div class="row">
+            <div class="col-6">
+              <input type="text" class="form-control mb-2" placeholder="Country">
+            </div>
+            <div class="col-6">
+              <input type="text" class="form-control mb-2" placeholder="City">
+            </div>
+          </div>
+          <div class="gift-option">
+            <label>
+              <input type="checkbox" [(ngModel)]="isGift">
+              <span class="ml-2">This order contains a gift</span>
+            </label>
+          </div>
+        <div *ngIf="isGift" class="gift-message">
+          <textarea id="giftMessage" placeholder="Gift Message" class="form-control mb-2" [(ngModel)]="giftMessage" rows="4"></textarea>
+          <input type="phone" class="form-control mb-2" placeholder="Receiver Phone number">
+          <div class="row">
+            <div class="col-6">
+              <input type="text" class="form-control mb-2" placeholder="Receiver First name">
+            </div>
+            <div class="col-6">
+              <input type="text" class="form-control mb-2" placeholder="Receiver Last name">
+            </div>
+          </div>
+          <input type="text" class="form-control mb-2" placeholder="Receiver Street address">
+          <div class="row">
+            <div class="col-6">
+              <input type="text" class="form-control mb-2" placeholder="Receiver Country">
+            </div>
+            <div class="col-6">
+              <input type="text" class="form-control mb-2" placeholder="Receiver City">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bill mt-2">
+      <div class="card">
+          <div class="card-body">
+              <table class="table table-borderless">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">qty</th>
+                      <th scope="col" class="text-right">total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of cartItems; let i = index">
+                      <th scope="row">{{ i + 1 }}</th>
+                      <td>{{ item.name }}</td>
+                      <td>Rs. {{ item.sellingPrice }}</td>
+                      <td>{{ item.quantity }}</td>
+                      <td class="text-right">Rs. {{ item.sellingPrice * item.quantity }}</td>
+                    </tr>
+                    <tr class="border-top">
+                      <td colspan="4">Shipping:</td>
+                      <td class="text-right">Rs. {{ shipping }}</td>
+                    </tr>
+                    <tr class="border-top">
+                      <td colspan="4">Subtotal:</td>
+                      <td class="text-right">Rs. {{ getTotalPrice() }}</td>
+                    </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+    </div>
+    <div class="card mt-2">
+      <div class="card-body">
+        <p class="h6 mb-2 font-weight-bold">Payment Information</p>
+        <p class="small">All transactions are secure and encrypted. Credit card information is never stored on our servers.</p>
+        
+        <div class="row border mx-1 my-2">
+          <div class="col-12">
+            <label>
+              <input type="radio" name="paytype">
+              Cash on delivery
+            </label>
+          </div>
+          <div class="col-12">
+            <label>
+              <input type="radio" name="paytype">
+                Bank Deposit
+            </label>
+          </div>
+          <div class="col-12">
+            <label>
+              <input type="radio" name="paytype">
+              Any Visa, MasterCard, AMEX, eZcash, mCash
+            </label>
+          </div>
+        </div>
+        <p class="small text-muted">Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.</p>
+        <div class="text-center mt-3">
+          <button class="btn btn-success w-25"><i class="bi bi-house-lock"></i> Place Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

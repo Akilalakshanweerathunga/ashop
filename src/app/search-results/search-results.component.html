@@ -1,0 +1,85 @@
+<div *ngIf="searchResults.length > 0">
+    <div class="row">
+        <div class="col-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="font-weight-bold"><u>Filters</u></h5>
+              <div class="my-3">
+                <h6  class="font-weight-bold">Brand</h6>
+                <div *ngFor="let brand of brands">
+                  <label>
+                    <input type="checkbox" [value]="brand" (change)="onBrandFilterChange($event)" /> {{ brand }}
+                  </label>
+                </div>
+              </div>
+              <div class="mb-3">
+                <h6 class="font-weight-bold">Stock Status</h6>
+                <div>
+                  <label>
+                    <input type="checkbox" (change)="onStockFilterChange($event)" /> In Stock
+                  </label>
+                </div>
+              </div>
+              <div class="mb-3">
+                <h6 class="font-weight-bold">Price Range</h6>
+                <input type="range" min="0" max="100000" [(ngModel)]="priceRange" (change)="onPriceRangeChange($event)" />
+                <span> Rs. {{ priceRange }}</span>
+              </div>
+              <div class="mb-3">
+                <h6 class="font-weight-bold">Sort by Price</h6>
+                <select (change)="onSortChange($event)" class="form-control form-control-sm w-50">
+                  <option value="lowToHigh">Low to High</option>
+                  <option value="highToLow">High to Low</option>
+                </select>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="col-9">
+      <h3>Search Results for "{{ searchTerm }}"</h3>
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12 my-2" *ngFor="let product of filteredSearchResults">
+          <div class="card product-card">
+            <label class="stock" [ngClass]="{'bg-success': product.stock, 'bg-danger': !product.stock}">
+              {{ product.stock ? 'In Stock' : 'Out of Stock' }}
+            </label>
+            <img class="card-img-top" [src]="product.image" [alt]="product.name">
+            <div class="card-body text-center px-1">
+              <p class="product-brand">{{ product.brand }}</p>
+              <p class="product-name h4 text-dark">{{ product.name }}</p>
+              <div>
+                <p class="selling-price h6">{{ product.sellingPrice | currency:selectedCurrency:'symbol':'1.2-2' }}</p>
+                <ng-container *ngIf="product.originalPrice !== null">
+                  <p class="original-price h6 mr-2">{{ product.originalPrice | currency:selectedCurrency:'symbol':'1.2-2' }}</p>
+                </ng-container>
+                <ng-container *ngIf="product.originalPrice == null">
+                  <p style="height: 4.44px;"></p>
+                </ng-container>
+              </div>
+              <div class="mt-2 btn-container">
+                <a class="wish btn btn-sm btn-outline-dark mr-1" [ngClass]="{'btn-active': isInWishList(product.id)}" title="Add to wish list" (click)="toggleWishList(product.id)"> <i class="fa fa-heart"></i> </a>
+                <button class="btn btn-sm btn-outline-dark mr-1" (click)="addToCart(product)" [disabled]="!product.stock">Add To Cart</button>
+                <a class="view btn btn-sm btn-outline-dark" [routerLink]="['/product', product.id]" title="View product"><i class="fa fa-eye"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+
+<div *ngIf="searchResults.length === 0">
+  <p>We're sorry, We found 0 matches for "{{ searchTerm }}".</p>
+  <div class="row">
+    <div class="col-12 bg-light py-3">
+      <p class="h5">Search Suggestions</p>
+      <ul>
+        <li>Check your spelling</li>
+        <li>Try more general words</li>
+        <li>Try different words that mean the same thing</li>
+        <li>Still having trouble! <a class="btn btn-sm btn-link">Contact Us.</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

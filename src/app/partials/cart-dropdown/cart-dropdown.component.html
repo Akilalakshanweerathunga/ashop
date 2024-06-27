@@ -1,0 +1,49 @@
+<div class="dropdown-menu py-0" [class.show]="isHovered">
+    <div class="card">
+        <div class="card-body p-0">
+            <ng-container *ngIf="cartItems.length > 0; else noItemsTemplate">
+                <div *ngFor="let item of cartItems">
+                    <div class="dropdown-item">
+                        <div class="row">
+                            <div class="col-3">
+                                <img [src]="item.image" [alt]="item.name" class="img-fluid">
+                            </div>
+                            <div class="col-6">
+                                <p class="product-title mb-1">{{ item.name }}</p>
+                                <p>{{ convertPrice(item.sellingPrice) | currency:selectedCurrency:'symbol':'1.2-2' }} x 
+                                    <a (click)="decreaseQuantity(item)" class="btn btn-sm btn-link text-dark border text-decoration-none">-</a> 
+                                    {{ item.quantity }} 
+                                    <a (click)="increaseQuantity(item)" class="btn btn-sm btn-link text-dark border text-decoration-none">+</a></p>
+                            </div>
+                            <div class="col-3 text-right">
+                                <a (click)="removeItem(item)" class="btn btn-link text-danger btn-sm h5"><i class="bi bi-trash3-fill"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #noItemsTemplate>
+                <div class="text-center p-2">
+                    <img class="w-75" src=".././../../assets/img/cart.gif">
+                    <p>No items in cart</p>
+                </div>
+            </ng-template>
+        </div>
+        <div class="card-footer" *ngIf="cartItems.length > 0">
+            <div class="row justify-content-between">
+                <div class="col-auto">
+                    <p class="mb-0">Sub Total </p>
+                    </div>
+                    <div class="col-auto">
+                        <p class="mb-0">LKR. {{ getTotalPrice() }}</p>
+                    </div>
+                    <div class="col-auto">
+                        <p class="small text-muted">Add your Delivery address at checkout to see delivery charges</p>
+                    </div>
+                </div>
+            <a routerLink="/cart" class="btn btn-sm btn-primary w-100"><i class="bi bi-cart"></i> View cart</a>
+            <a routerLink="/checkout" class="btn btn-sm btn-primary w-100">Checkout</a>
+
+        </div>
+    </div>
+</div>

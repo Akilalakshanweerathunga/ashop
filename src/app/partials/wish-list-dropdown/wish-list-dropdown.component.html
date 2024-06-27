@@ -1,0 +1,39 @@
+<div class="dropdown-menu py-0" [class.show]="isHovered">
+  <div class="card">
+    <div class="card-body p-0">
+      <ng-container *ngIf="wishlistItems.length > 0; else noItemsTemplate">
+        <div *ngFor="let item of wishlistItems">
+          <div class="dropdown-item">
+            <div class="row">
+              <div class="col-3">
+                <img [src]="item.image" [alt]="item.name" class="img-fluid">
+              </div>
+              <div class="col-6">
+                <p class="product-title mb-1">{{ item.name }}</p>
+                <p class="mb-1">
+                  {{ convertPrice(item.sellingPrice) | currency:selectedCurrency:'symbol':'1.2-2' }}
+                </p>
+                <ng-container *ngIf="item.originalPrice !== null">
+                  <span class="original-price mr-2">{{ convertPrice(item.originalPrice) | currency:selectedCurrency:'symbol':'1.2-2' }}</span>
+                </ng-container>
+                <label class="stock small" [ngClass]="{'bg-success': item.stock, 'bg-danger': !item.stock}">
+                  {{ item.stock ? 'In Stock' : 'Out of Stock' }}
+                </label>
+              </div>
+              <div class="col-3 text-right">
+                <a (click)="removeItem(item)" class="btn btn-link text-danger btn-sm h5"><i class="bi bi-trash3-fill"></i></a>
+                <a class="btn btn-link text-muted btn-sm h5 " [routerLink]="['/product', item.id]" title="View product"><i class="fa fa-eye"></i></a>
+                <button  class="btn btn-link text-muted btn-sm h5 mr-1 " title="add to cart" (click)="addToCart(item)" [disabled]="!item.stock"><i class="fa fa-shopping-cart"></i></button >
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noItemsTemplate>
+        <div class="text-center p-2">
+          <p>No items in wishlist</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

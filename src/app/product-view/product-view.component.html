@@ -1,0 +1,55 @@
+<div *ngIf="product">
+    <div class="row">
+        <div class="col-12 col-sm-8">
+            <div class="row">
+                <div class="col-12 col-sm-5">
+                    <img [src]="product.image" [alt]="product.name" class="w-100">
+                </div>
+                <div class="col-12 col-sm-7">
+                    <p class="product-name h3">{{ product.name }}</p>
+                    <label class="stock px-2 small mb-3" [ngClass]="{'bg-success': product.stock, 'bg-danger': !product.stock}">
+                        {{ product.stock ? 'In Stock' : 'Out of Stock' }}
+                    </label>
+                    <p class="mb-1">Per : 1 Unit(s)</p>
+                    <p class="mb-1">SKU : {{ product.productcode }}</p>
+                    <p class="mb-1">Brand : {{ product.brand }}</p>
+                    <p class="h5 text-primary my-3">
+                        <span class="mr-3 selling-price"> {{ convertPrice(product.sellingPrice) | currency:selectedCurrency:'symbol':'1.2-2' }}</span>
+                        <span *ngIf="product.originalPrice" class="original-price">{{ convertPrice(product.originalPrice) | currency:selectedCurrency:'symbol':'1.2-2' }}</span>
+                    </p>
+                    <p><a (click)="decreaseQuantity(product)" class="btn btn-sm btn-link text-dark border text-decoration-none">-</a> {{ product.quantity }} <a (click)="increaseQuantity(product)" class="btn btn-sm btn-link text-dark border text-decoration-none">+</a></p>
+                    <button class="btn btn-sm btn-outline-dark mr-1" (click)="addToCart(product)" [disabled]="!product.stock">Add To Cart</button>
+                    <a class="wish btn btn-sm btn-outline-dark mr-1" [ngClass]="{'btn-active': isInWishList(product.id)}" title="Add to wish list" (click)="toggleWishList(product.id)"> <i class="fa fa-heart"></i> </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 col-sm-4">
+            <p class="h2 font-weight-bold">Related Products</p>
+            <ul class="list-group">
+                <li *ngFor="let relatedProduct of relatedProducts" class="list-group-item p-0 mb-1">
+                    <a [routerLink]="['/product', relatedProduct.id]">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <img [src]="relatedProduct.image" [alt]="relatedProduct.name" class="w-100">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="r-product-title mb-0 text-dark">{{ relatedProduct.name }}</p>
+                                        <label class="stock px-2 small my-0" [ngClass]="{'bg-success': relatedProduct.stock, 'bg-danger': !relatedProduct.stock}">
+                                            {{ relatedProduct.stock ? 'In Stock' : 'Out of Stock' }}
+                                        </label>
+                                        <span class="border-left ml-2 pl-2 mb-0 small text-dark">{{ convertPrice(relatedProduct.sellingPrice) | currency:selectedCurrency:'symbol':'1.2-2' }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <a class="btn btn-sm btn-primary" [routerLink]="['/category', product.type]">View All</a>
+        </div>
+    </div>
+</div>
+  

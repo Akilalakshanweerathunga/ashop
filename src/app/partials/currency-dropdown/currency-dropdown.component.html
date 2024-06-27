@@ -1,0 +1,6 @@
+<label for="currency" class="mr-2"><i class="bi bi-currency-exchange"></i> Currency:</label>
+<select id="currency" [(ngModel)]="selectedCurrency" name="currency" (change)="onCurrencyChange($event)">
+  <option *ngFor="let currency of currencies" [value]="currency.code">
+    {{ currency.code }}
+  </option>
+</select>

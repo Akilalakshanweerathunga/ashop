@@ -1,0 +1,8 @@
+<div class="slide-container">
+    <div *ngFor="let slide of slides; let i = index" class="slide fade" [style.display]="currentSlide === i ? 'block' : 'none'">
+      <img [src]="slide" alt="">
+    </div>
+    <a href="#" class="prev" (click)="prev()" title="Previous">&#10094;</a>
+    <a href="#" class="next" (click)="next()" title="Next">&#10095;</a>
+</div>
+  

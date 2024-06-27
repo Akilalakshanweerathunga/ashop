@@ -1,0 +1,56 @@
+<app-main-banner></app-main-banner>
+
+<p class="h2 subtitle mt-3"><span>New Arrivals Products</span></p>
+
+<app-single-product 
+  [singleProduct]="newArrivals" 
+  [categoryTitle]="'New Arrivals Products'" 
+  class="row">
+</app-single-product>
+<div class="row justify-content-center my-5">
+  <div class="col-auto">
+    <a class="btn btn-sm btn-primary" [routerLink]="['/category', 'newArrivals']">View All New Arrivals</a>
+  </div>
+</div>
+<p class="h2 subtitle mt-3"><span>All categories</span></p>
+
+<app-product-carousel></app-product-carousel>
+
+<p class="h2 subtitle mt-3"><span>Foods</span></p>
+
+<app-single-product 
+  [singleProduct]="foods" 
+  [categoryTitle]="'Foods'" 
+  class="row">
+</app-single-product>
+<div class="row justify-content-center my-5">
+  <div class="col-auto">
+    <a class="btn btn-sm btn-primary" [routerLink]="['/category', 'foods']">View All Foods</a>
+  </div>
+</div>
+
+<p class="h2 subtitle mt-3"><span>beverages</span></p>
+
+<app-single-product 
+  [singleProduct]="beverages" 
+  [categoryTitle]="'beverages'" 
+  class="row">
+</app-single-product>
+<div class="row justify-content-center my-5">
+  <div class="col-auto">
+    <a class="btn btn-sm btn-primary" [routerLink]="['/category', 'beverages']">View All beverages</a>
+  </div>
+</div>
+
+<p class="h2 subtitle mt-3"><span>Hardware Items</span></p>
+
+<app-single-product 
+  [singleProduct]="hardware"  
+  [categoryTitle]="'Hardware Items'" 
+  class="row">
+</app-single-product>
+<div class="row justify-content-center my-5">
+  <div class="col-auto">
+    <a class="btn btn-sm btn-primary" [routerLink]="['/category', 'hardware']">View All Hardware Items</a>
+  </div>
+</div>

@@ -4,8 +4,30 @@ import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import AppServerModule from './src/main.server';
+import { MongoClient, ServerApiVersion } from 'mongodb';
+import cors from 'cors';
 
-// The Express app is exported so that it can be used by serverless Functions.
+const uri = "mongodb+srv://wbakilalakshan:FRT6Bl3xZZj9wfpK@ashop.xpar7za.mongodb.net/?retryWrites=true&w=majority&appName=Ashop";
+
+
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+
+async function pingDatabase() {
+  try {
+    await client.connect();
+    await client.db("admin").command({ ping: 1 });
+    return "Pinged your deployment. You successfully connected to MongoDB!";
+  } finally {
+    await client.close();
+  }
+}
+
 export function app(): express.Express {
   const server = express();
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
@@ -14,11 +36,23 @@ export function app(): express.Express {
 
   const commonEngine = new CommonEngine();
 
-  server.set('view engine', 'html');
-  server.set('views', browserDistFolder);
+  server.use(cors());
+  server.use(express.json());
 
   // Example Express Rest API endpoints
-  // server.get('/api/**', (req, res) => { });
+  server.get('/api/ping', async (req, res) => {
+    try {
+      const message = await pingDatabase();
+      res.send(message);
+    } catch (error) {
+      if (error instanceof Error) {
+        res.status(500).send(error.message);
+      } else {
+        res.status(500).send('An unknown error occurred.');
+      }
+    }
+  });
+
   // Serve static files from /browser
   server.get('*.*', express.static(browserDistFolder, {
     maxAge: '1y'

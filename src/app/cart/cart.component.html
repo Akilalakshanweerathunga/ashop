@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-10">
+                        <p>Shopping Cart</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="text-right">Price</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div *ngFor="let item of cartItems">
+                    <div class="border-bottom py-3">
+                        <div class="row justify-content-between">
+                            <div class="col-2">
+                                <img class="card-img-top" [src]="item.image" [alt]="item.name">
+                            </div>
+                            <div class="col-8">
+                                <p class="mb-1 h4">{{ item.name }}</p>
+                                    <label class="stock px-2 small" [ngClass]="{'bg-success': item.stock, 'bg-danger': !item.stock}">
+                                        {{ item.stock ? 'In Stock' : 'Out of Stock' }}
+                                    </label>
+                                    <p class="small mb-1">brand : {{ item.brand }} </p>
+                                <div class="d-flex">
+                                    <div>
+                                        <span>LKR. {{ item.sellingPrice }} x 
+                                            <a (click)="decreaseQuantity(item)" class="btn btn-sm btn-link text-dark border text-decoration-none">-</a> 
+                                            {{ item.quantity }} 
+                                            <a (click)="increaseQuantity(item)" class="btn btn-sm btn-link text-dark border text-decoration-none">+</a>
+                                        </span>
+                                    </div>
+                                    <a class="btn btn-sm btn-link border-right border-left ml-2" (click)="removeItem(item)">Remove</a>
+                                    <a class="btn btn-sm btn-link border-right">Share</a>
+                                    <a class="btn btn-sm btn-link" [routerLink]="['/product', item.id]"> View </a>
+
+                                </div>
+                            </div>
+                            <div class="col-2 text-right">
+                                <p>LKR. {{ item.sellingPrice * item.quantity }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row py-2">
+                    <div class="col-10">
+                        <p class="text-right">Subtotal ({{ cartCount }} items):</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="text-right">LKR. {{ getTotalPrice() }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <p>Subtotal ({{ cartCount }} items) : LKR. {{ getTotalPrice() }}</p>
+                <label>
+                    <input type="checkbox" [(ngModel)]="isGift">
+                    <span class="ml-2">This order contains a gift</span>
+                </label>
+                <a (click)="proceedToCheckout()" class="d-block btn btn-sm btn-warning w-100">Proceed to checkout</a>
+            </div>
+        </div>
+    </div>
+</div>

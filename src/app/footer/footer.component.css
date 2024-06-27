@@ -1,0 +1,100 @@
+.home-page-seventh-contact-section {
+    background: #1E4A57;
+    width: 100%;
+    padding: 26px 5.4263566%;
+}
+.home-page-seventh-contact-section .row .hpscsset {
+    display: flex;
+}
+.home-page-seventh-contact-section .row .hpscsset .home-page-seventh-contact-image-section-inner {
+    display: flex;
+    width: fit-content;
+    margin: auto;
+    align-self: center;
+
+}
+.home-page-seventh-contact-section .row .hpscsset .home-page-seventh-contact-image-section-inner .home-page-seventh-contact-image-section {
+    width: fit-content;
+    display: flex;
+}
+.home-page-seventh-contact-section .row .hpscsset .home-page-seventh-contact-image-section-inner .home-page-seventh-contact-image-section .home-page-seventh-contact-image {
+    align-self: center;
+}
+.home-page-seventh-contact-section .row .hpscsset .home-page-seventh-contact-image-section-inner .home-page-seventh-contact-text-sectionf {
+    width: fit-content;
+    margin-left: 7px;
+}
+.home-page-seventh-contact-section .row .hpscsset .home-page-seventh-contact-image-section-inner .home-page-seventh-contact-text-sectionf .home-page-seventh-contact-s-text {
+    font: normal normal normal 13px / 18px Open Sans;
+    letter-spacing: 0;
+    color: #fff;
+    margin-bottom: 0;
+    width: max-content;
+}
+.home-page-seventh-contact-f-text,
+.home-page-seventh-contact-t-text {
+    font: normal normal normal 18px / 22px "Roboto";
+    letter-spacing: 0;
+    color: #fff;
+    margin-bottom: 0;
+    width: max-content;
+}
+.home-page-seventh-contact-f-text{
+    line-height: 2.5rem;
+    margin-left: 1rem;
+}
+.custom-footer-main {
+    padding-right: 5.426356589%;
+    padding-left: 5.426356589%;
+    background-color: #e6e7e9;
+    padding-bottom: 8px;
+}
+.custom-footer-main .custom-footer.desktop-design {
+    max-width: 1225px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.custom-footer-first-section {
+    padding-bottom: 35px;
+}
+.custom-footer-first-section .custom-footer-address-first {
+    margin-top: 6px;
+    font: normal normal normal 14px / 23px "Roboto";
+    letter-spacing: 0;
+    color: #5f3d78;
+}
+.custom-footer-first-section .custom-footer-address-second {
+    margin-bottom: 21px;
+    font: normal normal normal 14px / 23px "Roboto";
+    letter-spacing: 0;
+    color: #5f3d78;
+}
+.custom-footer-first-section .custom-footer-phone-number-first {
+    font: normal normal normal 13px / 16px "Roboto";
+    letter-spacing: 0;
+    color: #5f3d78;
+    margin-bottom: 5px;
+}
+.custom-footer-first-section .custom-footer-phone-number-second {
+    font: normal normal bold 23px / 28px "Roboto";
+    letter-spacing: 0;
+    color: #5f3d78;
+    text-decoration: none;
+    padding-bottom: 35px;
+}
+.custom-footer-link-set-main .custom-footer-link-set {
+    display: grid;
+    padding-top: 25px;
+}
+.custom-footer-link-set .custom-footer-link-title {
+    margin-bottom: 17px;
+    font: normal normal bold 17px / 20px "Roboto";
+    letter-spacing: 0;
+    color: #3d5c65;
+}
+.custom-footer-link-set .custom-footer-link-link {
+    font: normal normal normal 14px / 33px "Roboto";
+    letter-spacing: 0;
+    color: #3d5c65;
+    text-decoration: none;
+}

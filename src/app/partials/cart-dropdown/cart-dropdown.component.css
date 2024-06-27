@@ -1,0 +1,54 @@
+.dropdown-menu {
+    position: absolute;
+    top: 3.8rem;
+    right: -3px;
+    float: right;
+    left: 73%;
+    z-index: 2000;
+    display: none;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+.card-body{
+    max-height: 57vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color:  #1E4956 var(--l-dark-blue);
+}
+.btn-sm {
+    padding: .125rem .25rem;
+    font-size: .875rem;
+    line-height: 1.25;
+    border-radius: .2rem;
+}
+.dropdown-item.active, .dropdown-item:active{
+    color: #16181b;
+    text-decoration: none;
+    background-color: #e9ecef;
+}
+.product-title{
+    width: 130%;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    outline: 0;
+    margin-bottom: 2px;
+
+}
+a,
+p{
+    font-size: 14px;
+    text-transform: capitalize;
+}
+.small{
+    font-size: 10px;
+    font-weight: 400;
+}

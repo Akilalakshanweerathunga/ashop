@@ -1,0 +1,46 @@
+.product-card a{
+    text-decoration: none;
+    cursor: pointer;
+}
+.stock{
+    color: #fff;
+    border-radius: 4px;
+    padding: 2px 12px;
+    font-size: 12px;
+}
+
+.product-brand{
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    color: #937979;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.product-name{
+    font-weight: 600;
+    text-wrap: wrap;
+}
+.selling-price{
+    font-weight: 600;
+    margin-right: 8px;
+}
+.original-price{
+    color: #937979;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+.r-product-title {
+    width: 130%;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.wish.btn-active,
+.wish.btn-active:hover{
+    background-color: #e33838;
+    color: #fff;
+    border: #e33838;
+}

@@ -1,0 +1,108 @@
+<div class="wrapper d-flex align-items-stretch">
+    <div [ngClass]="{ 'wrapper': true, 'd-flex': true, 'align-items-stretch': true, 'toggled': sidebarVisible }">
+        <app-sidebar></app-sidebar>
+    </div>
+
+    <div class="w-100">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <ul class="nav navbar-nav d-flex flex-row">
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" (click)="toggleSidebar()">
+                                <i [@rotateIcon]="isSidebarToggled ? 'close' : 'sliders'" class="h5 bi" [ngClass]="{'bi-sliders': !isSidebarToggled, 'bi-x-lg': isSidebarToggled}"></i>
+                            </a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a routerLink="/" class="nav-link h5 font-weight-bold mb-0" >AShop.lk</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav mr-auto d-flex flex-row" style="margin-left: 10.3%;">
+                        <li class="nav-item">
+                            <app-searchbar></app-searchbar>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="nav navbar-nav ml-auto d-flex flex-row">
+                                <li class="nav-item" (mouseenter)="wishListDropdown.showDropdown()" (mouseleave)="wishListDropdown.hideDropdown()">
+                                    <a class="nav-link">
+                                        <i class="fa fa-heart mr-1"></i>Wish list
+                                        <span>( {{ wishListCount }} )</span>
+                                    </a>
+                                    <app-wish-list-dropdown #wishListDropdown></app-wish-list-dropdown>
+                                </li>
+                                
+                                <li class="nav-item" (mouseenter)="cartDropdown.showDropdown()" (mouseleave)="cartDropdown.hideDropdown()">
+                                    <div class="shopping-cart-wrapper">
+                                        <div class="ts-tiny-cart-wrapper">
+                                            <a class="cart-control nav-link" title="View your shopping bag">
+                                                <span class="ic-cart"><i class="fa fa-shopping-cart"></i></span>
+                                                <span class="cart-number">{{ cartCount }}</span>
+                                            </a>
+                                            <app-cart-dropdown #cartDropdown></app-cart-dropdown>
+                                        </div>                                        
+                                    </div>
+                                </li>                                
+                                                             
+                                <li class="nav-item active">
+                                    <a class="nav-link" title="Login" data-toggle="modal" data-target="#loginModal"><span>Login</span></a>
+                                </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link" title="Create New Account" data-toggle="modal" data-target="#signupModal"><span>Sign up</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </nav>
+        <div class="header-top">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-6 col-sm-12 header-left pl-5">
+                        <a href="tel:+94771004153">+94771004153</a>
+                        <a href="mailto:asoftsl&#64;gmail.com">asoftsl&#64;gmail.com</a>
+                    </div>
+                    <div class="col-md-6 col-sm-12 header-right text-right">
+                        <a><i class="bi bi-geo-alt"></i> Track your Order</a>
+                        <a><i class="fa-solid fa-headset"></i> Support</a>
+                        <app-currency-dropdown (currencyChanged)="updateCurrency($event)"></app-currency-dropdown>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow nav-2">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav d-flex flex-row">
+                            <li class="nav-item">
+                                <app-dropdown [dropdownItems]="categoryDropdownItems"  (itemSelected)="onItemSelected($event)"></app-dropdown>
+                            </li>
+                            <li class="nav-item active">
+                                <app-dropdown [dropdownItems]="brandDropdownItems"  (itemSelected)="onItemSelected($event)"></app-dropdown>
+                            </li>
+                            <li class="nav-item">
+                                <app-dropdown [dropdownItems]="offersDropdownItems"  (itemSelected)="onItemSelected($event)"></app-dropdown>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>          
+        </nav>
+        <div id="content-wrapper" class="py-3 mb-5 container-fluid">
+            <div class="l-content">
+                <router-outlet />
+                
+                <app-scroll-to-top></app-scroll-to-top>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-login-modal></app-login-modal>
+<app-signup-modal></app-signup-modal>

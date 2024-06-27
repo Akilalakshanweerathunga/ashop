@@ -1,0 +1,20 @@
+<div class="dropdown">
+  <a class="nav-link dropdown-toggle mr-2 pb-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{ dropdownItems && dropdownItems.length > 0 ? dropdownItems[0].text : 'Select' }}
+  </a>
+  <div class="dropdown-menu mt-0" aria-labelledby="dropdownMenuButton">
+    <ng-container *ngFor="let item of dropdownItems">
+      <a *ngIf="item.link"
+         class="dropdown-item"
+         [routerLink]="item.link"
+         (click)="selectItem(item.text, item.link)">
+         {{ item.text }}
+      </a>
+      <a *ngIf="!item.link"
+         class="dropdown-item"
+         (click)="selectItem(item.text)">
+         {{ item.text }}
+      </a>
+    </ng-container>
+  </div>
+</div>

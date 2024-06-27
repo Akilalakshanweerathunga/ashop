@@ -1,1 +1,314 @@
-/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/bootstrap-icons/font/bootstrap-icons.min.css';
+@import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
+@import '../node_modules/@fontsource/roboto/400.css';
+@import '../node_modules/@fontsource/inter/index.css';
+@import '../node_modules/ngx-owl-carousel-o/lib/styles/scss/owl.carousel.scss';
+@import '../node_modules/ngx-owl-carousel-o/lib/styles/scss/owl.theme.default.scss';
+
+.l-btn-add{
+    border-radius: 8px;
+    background: #45108A;
+    color: #fff;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.l-btn-add:hover{
+    background: #3c0781;
+    color: #fff;
+}
+:root {
+	--l-theme: #FFFFFF;
+	--l-bg: #F8FAFF;
+	--l-dark-blue: #132452;
+	--l-lightblue: #0ec2f0;
+	--l-purple: #7177B1;
+	--l-white: #fff;
+	--l-sidebar-tray:#2A396A;
+	--l-content-tray:#D6D9EB;
+	--darkpurple: #1B002B;
+  }
+body{
+	overflow-y: auto;
+	background-color: var(--l-white);
+	font-family: 'Poppins', sans-serif;
+	scrollbar-width: 2px;
+	scrollbar-color: #222 #ffff ;
+}
+.l-content{
+	font-family: 'Inter', sans-serif;
+}
+.bg-color {
+	background-color: var(--l-bg);
+}
+.theme{
+	background-color: var(--l-theme);
+}
+.lh37{
+	line-height: 2.333rem;
+}
+.l-color-theme{
+	color: var(--l-purple);
+}
+.bg-white{
+	background-color: var(--l-white);
+}
+
+.l-bg-darkblue{
+	background-color: var(--l-dark-blue);
+}
+.white{
+	color: var(--l-white);
+}
+.l-color-purple{
+	color: var(--l-purple);
+}
+.black{
+	color: #0000;
+}
+/* body */
+.l-round-top{
+	border-top-left-radius: 0.75rem !important;
+	border-top-right-radius: 0.75rem !important;
+}
+/*scroll bar design*/
+/* all browsers expect firefox */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 6px;
+}
+#sidebar-wrapper::-webkit-scrollbar-track {
+	background: var(--l-sidebar-tray);
+}
+
+#sidebar-wrapper::-webkit-scrollbar-thumb {
+	background: var(--l-purple);
+}
+
+#sidebar-wrapper::-webkit-scrollbar-thumb:hover {
+	background: var(--l-purple);
+}
+/* Only FireFox */
+.container-fluid {
+	scrollbar-color:  var(--l-purple) var(--l-dark-blue);
+	scrollbar-width: thin;
+}
+
+/* placeholder design */
+::placeholder {
+	color: var(--Gray80);
+	opacity: 1;
+	text-transform: lowercase;
+  }
+  
+  :-ms-input-placeholder {
+	color: var(--Gray80);
+	text-transform: lowercase;
+  }
+  
+  ::-ms-input-placeholder { 
+	color: var(--Gray80);
+	text-transform: lowercase;
+  }
+/* side bar design */
+#sidebar-wrapper {
+	flex-direction: column;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 100vh;
+}
+
+#sidebar-wrapper main{
+	flex: 1;
+}
+
+#content-wrapper .l-content{
+	border-radius: 10px;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.l-sidebar {
+	width: 15.5rem;
+	-webkit-transition: all 0.35s ease;
+	-moz-transition: all 0.35s ease;
+	-o-transition: all 0.35s ease;
+	transition: all 0.35s ease;
+}
+
+.l-sidebar.icons {
+	width: 5.5rem;
+}
+.l-sidebar.icons .menu-name, 
+.l-sidebar.icons footer .copy-tag{
+	display: none;
+}
+.sidebar-background{
+	background-color: var(--darkpurple);
+}
+#sidebar-wrapper .list-group a,
+#sidebar-wrapper footer a,
+#sidebar-wrapper .search-ico{
+	color: var(--l-purple);
+	background-color: var(--darkpurple);
+	border: none;
+	text-transform: capitalize;
+}
+#sidebar-wrapper .list-group a:hover,
+#sidebar-wrapper footer a:hover{
+	color: #fff;
+	background: #F76820;
+}
+.copy-tag{
+	font-size: 0.6rem;
+	color: var(--l-purple);
+}
+#sidebar-wrapper .list-group a.active,
+#sidebar-wrapper footer .list-group a.active
+{
+	border-radius: 8px;
+	border: 1px solid rgba(255, 255, 255, 0.20);
+	background: rgba(255, 255, 255, 0.18);
+	color: rgba(255, 255, 255, 0.70);
+}
+.sidebar-search{
+	border-radius: 8px;
+	border: 1px solid rgba(255, 255, 255, 0.20);
+	background: rgba(255, 255, 255, 0.18);
+}
+.l-sidebar.icons .list-group a i,
+.l-sidebar.icons footer i.bi.bi-gear{
+	padding-left: 8px;
+}
+/* navbar design */
+.navbar{
+	padding: 0.25rem 1rem !important;
+    height: 3rem !important;
+}
+
+.navbar .nav-list-design a,
+.navbar .nav-list-design a span {
+    color: var(--darkpurple);
+    letter-spacing: 0.96px;
+}
+.navi-logo {
+	width: 5.325rem;
+}
+.navi-img{
+	width: 1.8rem;
+}
+.nav-list-design{
+	background: none;
+	border: none;
+}
+.nav-list-design a:hover,
+.nav-list-design a:active{
+	color: var(--l-dark-blue);
+}
+.l-fill-blue{
+	fill: var(--l-dark-blue);
+}
+.breadcrumb {
+    background: #f8faff;
+}
+.form-group.has-error .help-block{
+	color:red;
+}
+.no-footer #dttable_filter,
+.no-footer .dataTables_length,
+.no-footer .dataTables_filter{
+	display: none;
+}
+.toggle-btn{
+    position: absolute;
+    top: 5px;
+    left: 248px;
+    height: 36px;
+    background: #F76820;
+    color: white;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    z-index: 1000;
+}
+.icons .toggle-btn{
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+    border-radius: 6px;
+    background: #F76820;
+    color: white;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    z-index: 1000;
+}
+.list-group-item {
+    background-color: transparent;
+	border:none;
+}
+a, select, label{
+	cursor: pointer;
+}
+.subtitle {
+    color: #00305f;
+    font: 700 1.6rem / 1 "Open Sans", sans-serif;
+    letter-spacing: 0;
+    margin-bottom: 2rem;
+    position: relative;
+    text-transform: uppercase;
+}
+.subtitle span {
+    background: #fff;
+    padding-right: 2rem;
+    position: relative;
+    z-index: 2;
+}
+.subtitle:after {
+    background-color: #dde0e2;
+    content: '';
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 100%;
+    z-index: 1;
+}
+.btn-primary{
+	background-color: #1E4956;
+	border: #1E4956;
+}
+.btn-primary:hover,
+.btn-primary:active{
+	background-color: #123b47;
+	border: #123b47;
+}
+.owl-prev{
+	position: absolute;
+	top: 100px;
+	left: 10px;
+	height: 4rem;
+	line-height: 3.5rem;
+	background: #1e4956 !important;
+  }
+  .owl-next{
+	position: absolute;
+	top: 100px;
+	right: 10px;
+	height: 4rem;
+	line-height: 3.5rem;
+	background: #1e4956 !important;
+  }
+  .owl-item{
+	width: 300px !important;
+  }
+  .owl-stage{
+	background: rgb(30, 73, 86) !important;
+	  padding: 1rem !important;
+	  margin: 0rem 1rem !important;
+  }

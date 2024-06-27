@@ -1,0 +1,26 @@
+.subtitle {
+    color: #00305f;
+    font: 700 1.6rem / 1 "Open Sans", sans-serif;
+    letter-spacing: 0;
+    margin-bottom: 2rem;
+    position: relative;
+    text-transform: uppercase;
+}
+.subtitle span {
+    background: #fff;
+    padding-right: 2rem;
+    position: relative;
+    z-index: 2;
+}
+.subtitle:after {
+    background-color: #dde0e2;
+    content: '';
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 100%;
+    z-index: 1;
+}

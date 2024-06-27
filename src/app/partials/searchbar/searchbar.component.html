@@ -1,0 +1,24 @@
+<div class="input-group">
+	<span class="input-group-prepend">
+	  <div class="input-group-text bg-transparent border-right-0">
+		<i class="fa fa-search"></i>
+	  </div>
+	</span>
+	<input class="form-control py-2 border-left-0 border" type="search" placeholder="Search Product" [(ngModel)]="searchTerm" (input)="onInput($event)" (keyup.enter)="onSearch()">
+	<span class="input-group-append">
+	  <button class="btn btn-outline-secondary border-left-0 border" type="button" (click)="onSearch()">Search</button>
+	</span>
+  </div>
+  <ul class="dropdown-menu" *ngIf="filteredProducts.length > 0">
+	<li *ngFor="let product of filteredProducts" (click)="selectProduct(product)">
+	  <a class="btn btn-link btn-sm text-dark" [routerLink]="['/product', product.id]" >
+		<img class="card-img-top mr-2" [src]="product.image" [alt]="product.name">
+		<span class="h6">{{ product.name }}</span>
+		<label class="stock" [ngClass]="{'bg-success': product.stock, 'bg-danger': !product.stock}">
+			{{ product.stock ? 'In Stock' : 'Out of Stock' }}
+		</label>
+		<i class="bi bi-three-dots text-right"></i>
+	</a>
+	</li>
+  </ul>
+  

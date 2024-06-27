@@ -1,0 +1,9 @@
+select {
+    word-wrap: normal;
+    border: none;
+    min-width: 70px;
+}
+p, label{
+	color: #ffffff;
+    margin-bottom: 0;
+}

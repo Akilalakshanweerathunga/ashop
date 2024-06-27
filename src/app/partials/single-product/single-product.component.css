@@ -1,0 +1,82 @@
+.product-card a{
+    text-decoration: none;
+    cursor: pointer;
+}
+.stock{
+    position: absolute;
+    color: #fff;
+    border-radius: 4px;
+    padding: 2px 12px;
+    margin: 8px;
+    font-size: 12px;
+}
+
+.product-brand{
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    color: #937979;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.product-name{
+    font-weight: 500;
+    font-size: 1rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.selling-price{
+    font-weight: 600;
+    font-size: 0.8rem;
+    margin-right: 8px;
+}
+.original-price{
+    color: #937979;
+    font-weight: 400;
+    font-size: 0.7rem;
+    text-decoration: line-through;
+}
+.btn1{
+    border: 1px solid;
+    margin-right: 3px;
+    border-radius: 0px;
+    font-size: 12px;
+    margin-top: 10px;
+}
+/* .btn-container{
+    position: absolute;
+    top: 170px;
+    right: 0px;
+    padding: 0.5rem;
+    text-align: center;
+    background: #1e4a57;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; 
+}
+.product-card:hover .btn-container{
+    opacity: 1;
+} */
+
+.card-img, .card-img-top{
+    height: 13rem;
+    object-fit: contain;
+}
+.card{
+    min-height: 370px;
+}
+.wish.btn-active,
+.wish.btn-active:hover{
+    background-color: #e33838;
+    color: #fff;
+    border: #e33838;
+}
+.wish, .view{
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; 
+}
+.btn-container:hover .wish,
+.btn-container:hover .view{
+    opacity: 1;
+}

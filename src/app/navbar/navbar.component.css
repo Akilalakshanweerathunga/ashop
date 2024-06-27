@@ -1,0 +1,128 @@
+:root {
+	--l-theme: #FFFFFF;
+	--l-bg: #F8FAFF;
+	--l-dark-blue: #132452;
+	--l-lightblue: #0ec2f0;
+	--l-purple: #7177B1;
+	--l-white: #fff;
+	--l-sidebar-tray:#2A396A;
+	--l-content-tray:#D6D9EB;
+	--darkpurple: #1B002B;
+  }
+  
+.navbar{
+	padding: 0.25rem 1rem !important;
+    height: 4rem !important;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+.nav-2{
+    position: sticky;
+    top: 4rem;
+    z-index: 900;
+    height: 2rem !important;
+}
+.navbar .nav-list-design a,
+.navbar .nav-list-design a span {
+    color: var(--darkpurple);
+    letter-spacing: 0.96px;
+}
+.navi-logo {
+	width: 5.325rem;
+}
+.navi-img{
+	width: 1.8rem;
+}
+.nav-list-design{
+	background: none;
+	border: none;
+}
+.nav-list-design a:hover,
+.nav-list-design a:active{
+	color: var(--l-dark-blue);
+}
+.nav-link{
+	cursor: pointer;
+}
+.shopping-cart-wrapper {
+    margin-left: 15px;
+}
+.ts-tiny-cart-wrapper{
+	font-size: 13px;
+    line-height: 26px;
+}
+.shopping-cart-wrapper .cart-control {
+	color: rgba(16, 168, 77, 1);
+	padding-right: 12px;
+}
+.shopping-cart-wrapper a > .ic-cart {
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    display: inline-block;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 15px;
+    letter-spacing: 0;
+}
+.shopping-cart-wrapper a > .ic-cart {
+    border-color: rgba(39, 175, 125, 1);
+    background: transparent;
+    color: rgba(27, 27, 27, 1);
+}
+.fa-shopping-cart {
+    line-height: 35px;
+}
+.shopping-cart-wrapper a > .cart-number {
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+    line-height: 24px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    top: -10px;
+    right: 10px;
+}
+.shopping-cart-wrapper a > .cart-number {
+    background: rgba(39, 175, 125, 1);
+    color: rgba(255, 255, 255, 1);
+}
+.nav-item{
+	font-size: 15px;
+	text-transform: uppercase;
+	font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+.nav-link{
+	line-height: 56px;
+}
+.header-top {
+    border-color: rgba(44, 44, 44, 1);
+    background-color: #1e4a57;
+    padding: 10px 0;
+    margin-top: 4rem;
+	}
+.header-top a,
+.header-top p,
+.header-top label{
+	color: #ffffff;
+}
+.header-top a:hover, 
+.header-top a:active {
+    color: rgba(39, 175, 125, 1);
+	text-decoration: none;
+}
+.header-left a,
+.header-right a {
+	margin-right: 15px;
+}
+.account-control a {
+	margin-right: 10px;
+}
